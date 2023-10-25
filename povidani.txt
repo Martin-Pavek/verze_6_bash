@@ -1,0 +1,52 @@
+
+tato nova verze je napsana ciste pro bash, uz se vni nepouzivaji soubory hesel propojene z datumem
+ale pouziva se deklaracni tabulka klicu, tzn. ze hesla nejsou predem generovana dopredu ale pri spusteni
+souboru zasifruj_v6.sh se automaticky vygeneruje vzdy nove unikatni heslo dlouhe 126 znaku,
+kterym pak bude archiv zasifrovany
+tato nova verze je multiuzivatelska, kolik soubory klicu se vygeneruje tolik ruznych uzivatelu
+je pak muze pouzivat napr. prikazem generuj_v6.sh martin-pavel vygeneruju do adresare ktery je v
+souboru generuj_v6.sh jako "$cesta_soubory_hesel" (menit podle vlastni potreby) klic z nazvem "martin-patr"
+ktery bude obsahovat deklaracni tabulku pro zasifrovani hesla dlouheho 126 znaku ( delka hesla je na pevno 126 )
+prikazem zasifruj_v6.sh martin-patr NazevAdresar/ vytvorim archiv NazevAdresar_v6.zip ktery bude jako ve verzi pro PowerShell
+uvnitr obsahoval file comment (nelze ho pak zmenit bez znalosti hesla) a dalsi udaje
+nove file comment obsahuje taky nazev klice kterym byl zasifrovan, nemusi se pak volit pro desifrovani
+program si ho sam nacte, pokud nebyl omylem smazan nebo pozmenen dale pak se do file comment uklada
+252 znaku dlouhy retezec znaku ktery slozi jako za/dekodovani hesla v soucinosti z tabulku klicu
+dale obsahuje presny datum vytvoreni archivu a sha1sum souboru klice jaky byl pri vytvoreni archivu to slouzi pro
+kontrolu pri pozdejsim desifrovani jako overeni pravosti klice, pokud hodnota nesouhlasi z puvodni, program je 
+v tomto miste ukoncen
+
+tabulky klicu moho mit nazvy napr. martin-petr, petr-martin ( kazdy bude mit jiny obsah a oba klice budou mit oba lide v adresari keys/)
+nebo napr ja-petr, ja-tonda, osoba1-osoba2, osoba1-osoba10, osoba2-osoba10 a tak ruzne
+kazdy klic ma velikost priblizne 72 Kb, takze jich v pocitaci muzete mit kolik chcete
+nejvice asi napovi prilozene obrazky jpg, pozn. za_13.sh je samozdrejme pracovni verze souboru zasifruj_v6.sh atp.
+
+jako vzdy je taky na svete verze pro termux, ono je to v podstate totez akorat z jinou hodnotou "type bash" 
+na radku jedna a upravenou cestou na SD kartu promenna na radku 3
+takova uvaha: u teto verze si vlastne nejsem jisty kam az vlastne ve skutecnosti sahaji
+prsy Google a ke vsemu ma vlastne pristup, paklize mam mobilni telefon z unix systemem a nemam vnem root prava
+tak me to pride prinejmensim podivne, no tohle by bylo asi tema pro nejakeho odbornika, popravde receno nevim :(
+
+podekovani patri panu Lukasi Barinkovi za toto video https://www.youtube.com/watch?v=aFHYtL7UDyI
+ktere poslouzilo jako inspirace pro vznik teto nove verze
+pozn. samozdrejme je to open source takze kdyby se chtel nekdo vyradit a vylepsit neco tak tvorivosti 
+se meze nekladou
+
+20.10.2023
+autor
+
+skripty vypisuji vsechny mozne udaje, to slouzilo to pri ladeni programu
+samozdrejme pro mene bohaty vystup lze tyto radky zakomentovat 
+
+pozor v archivovanem adresari musi byt alespon 3 soubory a nebo 3 slozky a nebo 2 soubory a slozka apod.
+proste 3 polozky jinak se nezapisou spravne vsechny radky file komentaru ( neni do ceho )
+v pripade opaku je tedy NUTNE vytvorit ciste z tohoto duvodu napr. prikazem touch aaa/smazat1.txt aaa/smazat2.txt aaa/smazat3.txt
+a prikazem "unzip -l aaa_v6.zip | head -n 11" potom jeste radeji zkontrolovat vsechny informace
+
+posilal jsem soubor klice pres bluetooth z noteboku do mobilu z androidem a soubor se neposlal
+ale kdyz jsem ho prejmenovat na soubor *.txt tak uz to slo (asi tam ma google nejakou kontrolu co kdo posila)
+pak se to zase prejmenuje zpatky prikazem "mv neco.txt neco" nebo to prenest pres flash disk
+kontrolni soucet souboru se prejmenovanim nezmeni (zmena se provadi ve file systemu a neleze se tim do souboru)
+
+
+
